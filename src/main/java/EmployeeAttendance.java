@@ -17,7 +17,7 @@ public class EmployeeAttendance {
         EmployeeAttendance employeeAttendance = new EmployeeAttendance();
         System.out.println("!!!!!WELCOME TO THE EMPLOYEE ATTENDANCE SYSTEM!!!!!");
         employeeAttendance.createBinaryTree();
-        /*while(true) {
+        while(true) {
             System.out.println("Choose one of the options from:\n" +
                     "1. Get employee head count.\n" +
                     "2. Search employee.\n" +
@@ -33,7 +33,7 @@ public class EmployeeAttendance {
                 break;
             }
         }
-        System.out.println("!!!THANK YOU!!!");*/
+        System.out.println("!!!THANK YOU!!!");
     }
 
     void createBinaryTree() throws IOException {
@@ -41,10 +41,9 @@ public class EmployeeAttendance {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String empId;
         while(( empId = reader.readLine()) != null){
-            //System.out.println("Employee Id read is:" + empId);
             root = empBT.readEmployees(root, Integer.parseInt(empId));
-            empBT.inOrderTraversal(root);
-            System.out.println("\n");
+            //empBT.inOrderTraversal(root);
+            //System.out.println("\n");
         }
         System.out.println("Root is " + root.empId);
         System.out.println("Height if tree = " + empBT.height(root));

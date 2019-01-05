@@ -13,15 +13,41 @@ public class EmpBT {
     }
 
     int getHeadCount(EmployeeNode root){
-        return 0;
+        if(root == null){
+            return 0;
+        };
+        int headCount = 1; //Count the current node
+        headCount += getHeadCount(root.left); //Count the nodes in the left subtree
+        headCount += getHeadCount(root.right); //Count the nodes in the right subtree
+        return headCount;
     }
 
     boolean searchId(EmployeeNode root, int empId){
-        return false;
+        if(root == null){
+            return false;
+        }
+
+        if(root.empId == empId){
+            return true;
+        } else if(empId < root.empId){
+            return searchId(root.left, empId);
+        } else {
+            return searchId(root.right, empId);
+        }
     }
 
     int howOften(EmployeeNode root, int empId){
-        return 0;
+        if(root == null){
+            return 0;
+        }
+
+        if(root.empId == empId){
+            return (((int)(root.attCount/2)) + (root.attCount%2));
+        } else if(empId < root.empId){
+            return howOften(root.left, empId);
+        } else {
+            return howOften(root.right, empId);
+        }
     }
 
     EmployeeNode frequentVisitor(EmployeeNode root){
