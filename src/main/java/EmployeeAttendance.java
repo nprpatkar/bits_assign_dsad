@@ -15,10 +15,9 @@ public class EmployeeAttendance {
 
     public static void main(String[] args) throws IOException {
         EmployeeAttendance employeeAttendance = new EmployeeAttendance();
-        System.out.println("!!!!!WELCOME TO THE EMPLOYEE ATTENDANCE SYSTEM!!!!!");
         employeeAttendance.createBinaryTree();
         while(true) {
-            System.out.println("Choose one of the options from:\n" +
+            System.out.println("\nChoose one of the options from:\n" +
                     "1. Get employee head count.\n" +
                     "2. Search employee.\n" +
                     "3. Get number of time employee entered office.\n" +
@@ -33,7 +32,6 @@ public class EmployeeAttendance {
                 break;
             }
         }
-        System.out.println("!!!THANK YOU!!!");
     }
 
     void createBinaryTree() throws IOException {
@@ -45,8 +43,8 @@ public class EmployeeAttendance {
             //empBT.inOrderTraversal(root);
             //System.out.println("\n");
         }
-        System.out.println("Root is " + root.empId);
-        System.out.println("Height if tree = " + empBT.height(root));
+        //System.out.println("Root is " + root.empId);
+        //System.out.println("Height if tree = " + empBT.height(root));
 
     }
 
@@ -75,14 +73,14 @@ public class EmployeeAttendance {
             case 4:
                 EmployeeNode node = empBT.frequentVisitor(root);
                 System.out.println("Employee " + node.empId + " is the most frequent visitor with "
-                        + Math.ceil(node.attCount/2) + " visits.");
+                        + ((node.attCount/2) + (node.attCount % 2)) + " visits.");
                 break;
             case 5:
                 System.out.println("Enter range of emp ids:");
                 int empId1 = this.input.nextInt();
                 int empId2 = this.input.nextInt();
                 if(empId1 < empId2) {
-                    empBT.printRangePresent(root, empId1, empId2);
+                    empBT.printRangePresentToFile(root, empId1, empId2);
                 } else {
                     System.out.println("Incorrect input empId1 should be less than empId2");
                 }
