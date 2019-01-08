@@ -43,6 +43,8 @@ public class EmployeeAttendance {
             //empBT.inOrderTraversal(root);
             //System.out.println("\n");
         }
+        //empBT.levelOrderTraversal(root);
+        //System.out.println("\n");
         //System.out.println("Root is " + root.empId);
         //System.out.println("Height if tree = " + empBT.height(root));
 

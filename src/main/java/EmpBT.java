@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmpBT {
 
@@ -286,6 +288,26 @@ public class EmpBT {
             return 0;
         }
         return Math.max(height(root.left), height(root.right)) + 1;
+    }
+
+    void levelOrderTraversal(EmployeeNode root){
+        List<List<EmployeeNode>> list = new ArrayList<>();
+        List<EmployeeNode> nodeList = new ArrayList<>();
+        nodeList.add(root);
+        list.add(nodeList);
+        for(int i = 0; !list.get(i).isEmpty(); i++){
+            List<EmployeeNode> levelList = list.get(i);
+            List<EmployeeNode> nextLevelList = new ArrayList<>();
+            list.add(nextLevelList);
+            for(EmployeeNode node : levelList){
+                System.out.print( " " + node.empId + "::" + node.attCount + "::" + node.color + " ");
+                if(node.left != null)
+                    nextLevelList.add(node.left);
+                if(node.right != null)
+                    nextLevelList.add(node.right);
+            }
+            System.out.println();
+        }
     }
 
 }
