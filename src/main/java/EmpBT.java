@@ -12,17 +12,17 @@ public class EmpBT {
 
         if(node == null){
             //Insert returns null if the empId was present in the tree
-            //No need to run balancing if the node was present as only attCount was incremented
+            //No need to run balancing if the node was present, as only attCount was incremented
             return root;
         } else {
             node = fixViolations(node, newNode); //Balance the tree to fix any violations caused by inserting new node
-            return node;
+            return node; //This will be new root after balancing
         }
     }
 
     int getHeadCount(EmployeeNode root){
         if(root == null){
-            return 0;
+            return 0; //Terminating condition
         };
         int headCount = 1; //Count the current node
         headCount += getHeadCount(root.left); //Count the nodes in the left subtree
@@ -122,9 +122,8 @@ public class EmpBT {
         }
 
         //If the roots empId is in the range print it to the file
-        //TODO: What should be printed to file - attCount or number of times emp entered organization
         if(empId1 <= root.empId && root.empId <= empId2){
-            bufferedWriter.write(root.empId + ", " + root.attCount + "\n");
+            bufferedWriter.write(root.empId + ", " + ((root.attCount/2) + (root.attCount%2)) + "\n");
         }
 
         //If roots empId is less than empId2 then visit the right subtree for scanning
@@ -174,48 +173,64 @@ public class EmpBT {
             parent = node.parent;
             grandParent = node.parent.parent;
 
+            //Check whether the parent is left child of the grandparent
             if(parent == grandParent.left){
-                EmployeeNode uncle = grandParent.right;
+                EmployeeNode uncle = grandParent.right; //Uncle will be right child of the grandparent
 
+                //Check whether uncle color is RED
+                //If yes then then change color the parent and uncle as BLACK and grandparent as RED
+                //Repeat the loop with grandparent as the node
                 if(uncle != null && uncle.color == EmployeeNode.Color.RED){
                     grandParent.color = EmployeeNode.Color.RED;
                     parent.color = EmployeeNode.Color.BLACK;
                     uncle.color = EmployeeNode.Color.BLACK;
                     node = grandParent;
                 } else {
+                    //Uncle is BLACK or not present(not present and BLACK is considered as same)
+                    //Check whether the node is the right child of the parent
+                    //If yes then rotate the parent to left - with this node becomes parent and parent becomes node
                     if(node == parent.right){
                         root = rotateLeft(root, parent);
                         node = parent;
                         parent = node.parent;
                     }
 
+                    //Rotate the grandparent to right
                     root = rotateRight(root, grandParent);
-                    swapColor(parent, grandParent);
-                    node = parent;
+                    swapColor(parent, grandParent); //Swap parent and grandparent color
+                    node = parent; //Repeat the loop with parent
                 }
             } else {
+                //Parent is right child of the grand parent and uncle will be the left child
                 EmployeeNode uncle = grandParent.left;
 
+                //Check whether the uncle color us RED
+                //If yes then then change color the parent and uncle as BLACK and grandparent as RED
+                //Repeat the loop with grandparent as the node
                 if(uncle != null && uncle.color == EmployeeNode.Color.RED){
                     grandParent.color = EmployeeNode.Color.RED;
                     parent.color = EmployeeNode.Color.BLACK;
                     uncle.color = EmployeeNode.Color.BLACK;
                     node = grandParent;
                 } else {
+                    //Uncle is BLACK or not present
+                    //Check whether the node is left child of the parent
+                    //If yes then rotate the parent to right - with this node becomes parent and parent becomes node
                     if(node == parent.left){
                         root = rotateRight(root, parent);
                         node = parent;
                         parent = node.parent;
                     }
 
+                    //Rotate the grandparent to left
                     root = rotateLeft(root, grandParent);
-                    swapColor(parent, grandParent);
-                    node = parent;
+                    swapColor(parent, grandParent); //Swap parent and grandparent color
+                    node = parent; //Repeat the loop with parent
                 }
             }
         }
 
-        root.color = EmployeeNode.Color.BLACK;
+        root.color = EmployeeNode.Color.BLACK; //Color the root as BLACK
         return root;
     }
 

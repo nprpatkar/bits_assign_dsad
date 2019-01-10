@@ -81,7 +81,7 @@ public class EmployeeAttendance {
                 System.out.println("Enter range of emp ids:");
                 int empId1 = this.input.nextInt();
                 int empId2 = this.input.nextInt();
-                if(empId1 < empId2) {
+                if(empId1 <= empId2) {
                     empBT.printRangePresentToFile(root, empId1, empId2);
                 } else {
                     System.out.println("Incorrect input empId1 should be less than empId2");
