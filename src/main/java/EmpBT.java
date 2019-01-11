@@ -289,23 +289,24 @@ public class EmpBT {
         node2.color = color;
     }
 
-    void inOrderTraversal(EmployeeNode root){
+
+    /*void inOrderTraversal(EmployeeNode root){
         if(root == null){
             return;
         }
         inOrderTraversal(root.left);
         System.out.println(root.empId + "::" + root.attCount + "::" + root.color);
         inOrderTraversal(root.right);
-    }
+    }*/
 
-    int height(EmployeeNode root){
+    /*int height(EmployeeNode root){
         if(root == null){
             return 0;
         }
         return Math.max(height(root.left), height(root.right)) + 1;
-    }
+    }*/
 
-    void levelOrderTraversal(EmployeeNode root){
+    /*void levelOrderTraversal(EmployeeNode root){
         List<List<EmployeeNode>> list = new ArrayList<>();
         List<EmployeeNode> nodeList = new ArrayList<>();
         nodeList.add(root);
@@ -323,6 +324,6 @@ public class EmpBT {
             }
             System.out.println();
         }
-    }
+    }*/
 
 }

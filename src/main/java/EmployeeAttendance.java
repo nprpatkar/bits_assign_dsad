@@ -40,9 +40,9 @@ public class EmployeeAttendance {
         String empId;
         while(( empId = reader.readLine()) != null){
             root = empBT.readEmployees(root, Integer.parseInt(empId));
-            //empBT.inOrderTraversal(root);
-            //System.out.println("\n");
         }
+        //empBT.inOrderTraversal(root);
+        //System.out.println("\n");
         //empBT.levelOrderTraversal(root);
         //System.out.println("\n");
         //System.out.println("Root is " + root.empId);
