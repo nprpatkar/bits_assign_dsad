@@ -1,0 +1,6 @@
+1. EmployeeNode readEmployees(EmployeeNode emp, int id): O(log n)
+2. int getHeadcount(EmployeeNode emp): O(n)
+3. boolean searchID(EmployeeNode emp, int id): O(log n)
+4. int howOften(EmployeeNode emp, int id): O(log n)
+5. EmployeeNode frequentVisitor(EmployeeNode emp): O(n)
+6. void printRangePresent(Employees emp, int id1, int id2): O(n)
