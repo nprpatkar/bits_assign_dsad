@@ -75,7 +75,7 @@ public class EmployeeAttendance {
             case 4:
                 EmployeeNode node = empBT.frequentVisitor(root);
                 System.out.println("Employee " + node.empId + " is the most frequent visitor with "
-                        + ((node.attCount/2) + (node.attCount % 2)) + " visits.");
+                        + node.attCount + " visits.");
                 break;
             case 5:
                 System.out.println("Enter range of emp ids:");

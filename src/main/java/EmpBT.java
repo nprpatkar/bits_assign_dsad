@@ -53,7 +53,7 @@ public class EmpBT {
 
         if(root.empId == empId){
             //If empId found then return the number of times employee entered office
-            return ((root.attCount/2) + (root.attCount%2));
+            return root.attCount;
         } else if(empId < root.empId){
             //Search for empId in the left subtree of the root
             return howOften(root.left, empId);
@@ -123,7 +123,7 @@ public class EmpBT {
 
         //If the roots empId is in the range print it to the file
         if(empId1 <= root.empId && root.empId <= empId2){
-            bufferedWriter.write(root.empId + ", " + ((root.attCount/2) + (root.attCount%2)) + "\n");
+            bufferedWriter.write(root.empId + ", " + root.attCount + "\n");
         }
 
         //If roots empId is less than empId2 then visit the right subtree for scanning
