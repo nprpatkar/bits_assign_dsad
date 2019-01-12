@@ -41,6 +41,7 @@ public class EmployeeAttendance {
         while(( empId = reader.readLine()) != null){
             root = empBT.readEmployees(root, Integer.parseInt(empId));
         }
+        reader.close();
         //empBT.inOrderTraversal(root);
         //System.out.println("\n");
         //empBT.levelOrderTraversal(root);
